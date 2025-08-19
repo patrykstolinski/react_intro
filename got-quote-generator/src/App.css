@@ -1,3 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000; /* optional, just to check */
+}
+
+blockquote {
+  margin: 0; /* kill default browser margins */
+}
+
 .App {
   text-align: center;
 }
