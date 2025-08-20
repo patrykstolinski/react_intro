@@ -1,16 +1,22 @@
 import './App.css';
 import QuoteCard from './quoteCard';
 
-  const gotQuotes = [
-    { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
-    { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
-    { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
-    { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
-    { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
-    { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
-    { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
-    { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
-  ];
+const gotQuotes = [
+  { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
+  { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
+  { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
+  { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
+  { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
+  { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
+  { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
+  { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
+];
+
+// like button functionality
+const handleLike = (characterName) => {
+  console.log(`${characterName} Zitat wurde geliked!`);
+}
+
 
 function App() {
   return (
@@ -27,7 +33,9 @@ function App() {
           characterName = {q.character}
           isQuoteEpic = {q.epic}
           >
-          <button style={{
+          <button 
+            onClick={() => handleLike(q.character)}
+            style={{
               backgroundColor: '#b3461bff',
               color: 'white',
               padding: '8px 15px',
@@ -35,7 +43,7 @@ function App() {
               borderRadius: '5px',
               cursor: 'pointer',
               marginTop: '10px'
-            }}>
+              }}>
           Like!
           </button>
           </QuoteCard>
@@ -48,3 +56,4 @@ function App() {
 }
 
 export default App;
+
