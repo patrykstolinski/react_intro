@@ -1,50 +1,51 @@
 import './App.css';
 
-const quote = "Der Winter naht.";
-const character = "Ned Stark";
-const isEpic = true;
+  const gotQuotes = [
+    { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
+    { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
+    { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
+    { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
+    { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
+    { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
+    { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
+    { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
+  ];
 
-const quoteStyle = {
-  fontStyle: "italic",
-  color: "#F8C471",
-  fontSize: "1.5em",
-  marginBottom: "10px",
-  borderLeft: "4px solid #F8C471",
-  paddingLeft: "15px",
-  display: "inline-block", // damit er nicht den border left so weit weg hat
-};
+  const quoteStyle = {
+    fontStyle: 'italic',
+    color: '#f89a03ff',
+    fontSize: '1.5em',
+    marginBottom: '10px',
+    borderLeft: '4px solid #f89a03ff',
+    paddingLeft: '15px'
+  };
 
-const characterStyle = {
+  const characterStyle = {
     fontSize: '0.8em',
-    color: '#ccc',
+    color: '#434343ff',
     marginTop: '5px',
     display: 'block'
   };
-
-  const quoteBg = {
-    backgroundColor: "#884c4cff"
-
-  }
-
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>Game of Thrones Zitat-generator</h1>
-      <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
+        <h1>Game of Thrones Zitat-Generator</h1>
+        <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
-      <div style={quoteBg}>
       <main>
-        <blockquote style={quoteStyle}>
-          "{quote}"
-        </blockquote>
+          {gotQuotes.map( q=>
+          <blockquote style = {quoteStyle}>
+                "{q.quote}"
+                <footer style = {characterStyle}>
+                  - {q.character}
+                    {q.epic && <span style = {{marginLeft: "10px"}}>🌟</span>}
+                </footer>
+          </blockquote>
+          )} {/* here ends the fucking function, jesus */}
+          
       </main>
-      <footer style={characterStyle}>
-        - {character}
-        {isEpic && <span style={{ marginLeft: '10px' }}>🌟</span>}
-      </footer>
-      </div>
     </div>
   );
 }
