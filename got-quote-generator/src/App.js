@@ -1,4 +1,5 @@
 import './App.css';
+import QuoteCard from './quoteCard';
 
   const gotQuotes = [
     { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
@@ -35,16 +36,7 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-          {gotQuotes.map( q=>
-          <blockquote style = {quoteStyle}>
-                "{q.quote}"
-                <footer style = {characterStyle}>
-                  - {q.character}
-                    {q.epic && <span style = {{marginLeft: "10px"}}>🌟</span>}
-                </footer>
-          </blockquote>
-          )} {/* here ends the fucking function, jesus */}
-          
+        <QuoteCard/>
       </main>
     </div>
   );
