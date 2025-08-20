@@ -36,7 +36,18 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        <QuoteCard/>
+        {gotQuotes.map(q => (
+          <QuoteCard
+          key = {q.id}
+          quoteText = {q.quote}
+          characterName = {q.character}
+          isQuoteEpic = {q.epic}
+          quoteStyle = {quoteStyle}
+          characterStyle = {characterStyle}
+          />
+        ))
+
+        }
       </main>
     </div>
   );
