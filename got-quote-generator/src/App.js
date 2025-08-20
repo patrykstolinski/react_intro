@@ -12,22 +12,6 @@ import QuoteCard from './quoteCard';
     { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
   ];
 
-  const quoteStyle = {
-    fontStyle: 'italic',
-    color: '#f89a03ff',
-    fontSize: '1.5em',
-    marginBottom: '10px',
-    borderLeft: '4px solid #f89a03ff',
-    paddingLeft: '15px'
-  };
-
-  const characterStyle = {
-    fontSize: '0.8em',
-    color: '#434343ff',
-    marginTop: '5px',
-    display: 'block'
-  };
-
 function App() {
   return (
     <div className="App">
@@ -42,8 +26,6 @@ function App() {
           quoteText = {q.quote}
           characterName = {q.character}
           isQuoteEpic = {q.epic}
-          quoteStyle = {quoteStyle}
-          characterStyle = {characterStyle}
           />
         ))
 
