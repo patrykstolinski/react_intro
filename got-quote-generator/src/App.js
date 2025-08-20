@@ -2,6 +2,7 @@ import './App.css';
 
 const quote = "Der Winter naht.";
 const character = "Ned Stark";
+const isEpic = true;
 
 const quoteStyle = {
   fontStyle: "italic",
@@ -10,7 +11,7 @@ const quoteStyle = {
   marginBottom: "10px",
   borderLeft: "4px solid #F8C471",
   paddingLeft: "15px",
-  display: "inline-block",
+  display: "inline-block", // damit er nicht den border left so weit weg hat
 };
 
 const characterStyle = {
@@ -41,6 +42,7 @@ function App() {
       </main>
       <footer style={characterStyle}>
         - {character}
+        {isEpic && <span style={{ marginLeft: '10px' }}>🌟</span>}
       </footer>
       </div>
     </div>
