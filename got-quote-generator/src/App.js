@@ -17,7 +17,6 @@ const handleLike = (characterName) => {
   console.log(`${characterName} Zitat wurde geliked!`);
 }
 
-
 function App() {
   return (
     <div className="App">
@@ -28,32 +27,16 @@ function App() {
       <main>
         {gotQuotes.map(q => (
           <QuoteCard
-          key = {q.id}
-          quoteText = {q.quote}
-          characterName = {q.character}
-          isQuoteEpic = {q.epic}
-          >
-          <button 
-            onClick={() => handleLike(q.character)}
-            style={{
-              backgroundColor: '#b3461bff',
-              color: 'white',
-              padding: '8px 15px',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              marginTop: '10px'
-              }}>
-          Like!
-          </button>
-          </QuoteCard>
-        ))
-
-        }
+            key={q.id}
+            quoteText={q.quote}
+            characterName={q.character}
+            isQuoteEpic={q.epic}
+            onLike={() => handleLike(q.character)} // ✅ pass the function
+          />
+        ))}
       </main>
     </div>
   );
 }
 
 export default App;
-
