@@ -1,3 +1,4 @@
+import React, { useState } from 'react'; // useState importiert
 import './App.css';
 import QuoteCard from './quoteCard';
 
@@ -12,6 +13,8 @@ function App() {
     { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
     { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
   ];
+
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0); // NEUE Zeile
 
   const quoteStyle = {
     fontStyle: 'italic',
@@ -29,9 +32,15 @@ function App() {
     display: 'block'
   };
 
-  const handleLike = (characterName) => { // NEUE Funktion
+  const handleLike = (characterName) => {
     console.log(`${characterName} Zitat wurde geliked!`);
   };
+
+  const showNextQuote = () => { // NEUE Funktion
+    setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % gotQuotes.length);
+  };
+
+  const currentQuote = gotQuotes[currentQuoteIndex]; // NEUE Zeile
 
   return (
     <div className="App">
@@ -40,27 +49,29 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        {gotQuotes.map(q => (
-          <QuoteCard
-            key={q.id}
-            quoteText={q.quote}
-            characterName={q.character}
-            isQuoteEpic={q.epic}
-            onLike={() => handleLike(q.character)} // NEUE Prop
-          >
-            <button style={{
-              backgroundColor: '#4CAF50',
-              color: 'white',
-              padding: '8px 15px',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              marginTop: '10px'
-            }}>
-              Gefällt mir!
-            </button>
-          </QuoteCard>
-        ))}
+        <QuoteCard // Geändert: nur eine QuoteCard
+          key={currentQuote.id}
+          quoteText={currentQuote.quote}
+          characterName={currentQuote.character}
+          isQuoteEpic={currentQuote.epic}
+          onLike={() => handleLike(currentQuote.character)}
+        />
+        <button // NEUER Button
+          onClick={showNextQuote}
+          style={{
+            backgroundColor: '#DAA520',
+            color: 'white',
+            padding: '10px 20px',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            marginTop: '20px',
+            fontSize: '1.1em',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          }}
+        >
+          Nächstes Zitat »
+        </button>
       </main>
     </div>
   );
