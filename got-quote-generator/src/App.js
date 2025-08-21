@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // useState importiert
+import React, { useState } from 'react';
 import './App.css';
 import QuoteCard from './quoteCard';
 
@@ -14,7 +14,8 @@ function App() {
     { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
   ];
 
-  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0); // NEUE Zeile
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [showEpicMessage, setShowEpicMessage] = useState(true); // NEUE Zeile
 
   const quoteStyle = {
     fontStyle: 'italic',
@@ -36,11 +37,16 @@ function App() {
     console.log(`${characterName} Zitat wurde geliked!`);
   };
 
-  const showNextQuote = () => { // NEUE Funktion
+  const showNextQuote = () => {
     setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % gotQuotes.length);
+    setShowEpicMessage(true); // GEÄNDERTE Zeile
   };
 
-  const currentQuote = gotQuotes[currentQuoteIndex]; // NEUE Zeile
+  const toggleEpicMessage = () => { // NEUE Funktion
+    setShowEpicMessage(!showEpicMessage);
+  };
+
+  const currentQuote = gotQuotes[currentQuoteIndex];
 
   return (
     <div className="App">
@@ -49,14 +55,40 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        <QuoteCard // Geändert: nur eine QuoteCard
+        <QuoteCard
           key={currentQuote.id}
           quoteText={currentQuote.quote}
           characterName={currentQuote.character}
           isQuoteEpic={currentQuote.epic}
           onLike={() => handleLike(currentQuote.character)}
         />
-        <button // NEUER Button
+
+        {currentQuote.epic && ( // NEUER Block
+          <button
+            onClick={toggleEpicMessage}
+            style={{
+              backgroundColor: '#A0522D',
+              color: 'white',
+              padding: '8px 15px',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              marginTop: '10px',
+              marginBottom: '10px',
+              fontSize: '0.9em'
+            }}
+          >
+            {showEpicMessage ? 'Epische Nachricht ausblenden' : 'Epische Nachricht anzeigen'}
+          </button>
+        )}
+
+        {currentQuote.epic && showEpicMessage && ( // NEUER Block
+          <p style={{ color: '#F8C471', fontStyle: 'italic', fontSize: '1.2em' }}>
+            Das ist ein wahrlich episches Zitat! 👑
+          </p>
+        )}
+
+        <button
           onClick={showNextQuote}
           style={{
             backgroundColor: '#DAA520',
