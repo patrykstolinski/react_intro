@@ -1,0 +1,50 @@
+.card {
+  background-color: #3a3f4a;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  /* width: 85%; */
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #4a4f5a;
+  box-sizing: border-box;
+}
+
+.quoteText {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #F8C471;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+  font-size: 0.9em;
+  color: #bbb;
+  margin-top: 15px;
+}
+
+.characterName {
+  font-weight: bold;
+  color: #ccc;
+}
+
+.epicStar {
+  margin-left: 8px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+/* Responsive Anpassungen für die QuoteCard */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .quoteText {
+    font-size: 1.3em;
+  }
+}
